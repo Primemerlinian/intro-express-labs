@@ -2,6 +2,9 @@
 
 import express from 'express'
 
+// import the todo data
+import { cars } from './data/cars-data.js'
+
 // Create Express app
 
 const app = express()
@@ -16,11 +19,15 @@ app.set('view engine', 'ejs')
 
 // Mount routes
 
-app.get('/home', function(req, res) {
-  res.render('home')
+app.get('/', function(req, res) {
+  res.redirect('/cars')
 })
 
-
+app.get('/cars', function(req, res) {
+  res.render('cars/index', {
+    cars: cars
+  })
+})
 
 // Tell the app to listen on port 3000
 
